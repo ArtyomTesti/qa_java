@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
@@ -15,14 +13,14 @@ public class LionParameterizedTest {
     private final boolean expectedHasMane;
 
     @Mock
-    private Predator predator;
+    private Feline feline;
 
     public LionParameterizedTest(String sex, boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Пол: {0}, Ожидается грива: {1}")
     public static Object[][] getTestData() {
         return new Object[][] {
                 {"Самец", true},
@@ -32,7 +30,7 @@ public class LionParameterizedTest {
 
     @Test
     public void testDoesHaveMane() throws Exception {
-        Lion lion = new Lion(sex, predator);
+        Lion lion = new Lion(sex, feline);
         assertEquals(expectedHasMane, lion.doesHaveMane());
     }
 }

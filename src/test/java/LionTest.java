@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 public class LionTest {
 
     @Mock
-    private Feline feline; // Теперь мок Feline
+    private Feline feline;
 
     @Test(expected = Exception.class)
     public void testInvalidSex() throws Exception {

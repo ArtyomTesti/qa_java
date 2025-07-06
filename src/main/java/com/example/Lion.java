@@ -5,10 +5,10 @@ import java.util.List;
 public class Lion {
 
     boolean hasMane;
-    private Predator predator;
+    private Feline feline;  // Зависимость на Feline вместо Predator
 
-    public Lion(String sex, Predator predator) throws Exception {
-        this.predator = predator;
+    public Lion(String sex, Feline feline) throws Exception {  // Конструктор принимает Feline
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -19,7 +19,7 @@ public class Lion {
     }
 
     public int getKittens() {
-        return predator instanceof Feline ? ((Feline) predator).getKittens() : 0;
+        return feline.getKittens();  // Прямой вызов метода Feline
     }
 
     public boolean doesHaveMane() {
@@ -27,6 +27,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return predator.eatMeat();
+        return feline.eatMeat();  // Прямой вызов метода Feline
     }
 }
